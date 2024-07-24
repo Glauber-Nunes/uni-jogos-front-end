@@ -12,6 +12,12 @@ import CampeonatoForm from './componentes/CampeonatoForm';
 import AtualizarResultadoForm from './componentes/AtualizarResultadoForm';
 import GrupoDetalhes from './componentes/GrupoDetalhes';
 import AdicionarEquipeForm from './componentes/AdicionarEquipeForm';
+import Tabela from './componentes/Tabela';
+import Partida from './componentes/Partida';
+import TeamForm from './componentes/TeamForm.js';
+import GerarJogos from './componentes/GerarJogos.js';
+import TabelaEPartida from './componentes/TabelaEPartida.js';
+import MatchesList from './componentes/MatchesList.js';
 
 const App = () => {
     return (
@@ -22,14 +28,11 @@ const App = () => {
                 <div style={styles.content}>
                     <Routes>
                         <Route path="/" element={<Dashboard />} />
-                        <Route path="/equipes/novo" element={<EquipeForm />} />
-                        <Route path="/equipes" element={<EquipeList />} />
-                        <Route path="/partidas/novo" element={<PartidaForm />} />
-                        <Route path="/partidas" element={<PartidaList />} />
-                        <Route path="/torneios" element={<CampeonatoForm />} />
-                        <Route path="/resultados" element={<AtualizarResultadoForm />} />
-                        <Route path="/adcionarEquipeGrupo" element={<AdicionarEquipeForm />} />
-                        <Route path="/grupos/:grupoId" element={<GrupoDetalhes />} />
+                        <Route path="/tabela-e-partida" element={<TabelaEPartida />} />
+                        <Route path="/cadastrar-time" element={<TeamForm />} />
+                        <Route path="/tabela" element={<Tabela />} />
+                        <Route path="/gerar-jogos" element={<GerarJogos />} />
+                        <Route path="/jogos" element={<MatchesList />} />
                     </Routes>
                 </div>
             </div>

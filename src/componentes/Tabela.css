@@ -1,0 +1,60 @@
+.tabela-container {
+    margin-top: 20px;
+}
+
+.tabela-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tabela-header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+}
+
+.tabela-classificacao {
+    margin-top: 20px;
+}
+
+.table-success {
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+.table-warning {
+    background-color: #ffc107 !important;
+    color: black !important;
+}
+
+.table-danger {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.match-row {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+
+.team-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.score-input input {
+    text-align: center;
+    width: 50px;
+}
+
+.vs {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.match-details {
+    text-align: center;
+    color: #555;
+    font-size: 0.9em;
+}

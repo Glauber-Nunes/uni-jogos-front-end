@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { FaPlus, FaList, FaHomer, FaFutbol, FaUserPlus, FaFacebookF, FaStar } from 'react-icons/fa';
+import { FaPlus, FaList, FaHomer, FaFutbol, FaUserPlus, FaFacebookF, FaStar, FaTable, FaGamepad } from 'react-icons/fa';
 
 const NavBar = () => {
     return (
@@ -10,36 +10,23 @@ const NavBar = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                   <LinkContainer to="/">
-                        <Nav.Link><FaStar style={styles.icon} /> Inicio</Nav.Link>
+                <LinkContainer to="/">
+                        <Nav.Link><FaTable style={styles.icon} /> Homer</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to="/equipes/novo">
-                        <Nav.Link><FaPlus style={styles.icon} /> Nova Equipe</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/equipes">
-                        <Nav.Link><FaList style={styles.icon} /> Listar Equipes</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/partidas/novo">
-                        <Nav.Link><FaFutbol style={styles.icon} /> Nova Partida</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/partidas">
-                        <Nav.Link><FaList style={styles.icon} /> Listar Partidas</Nav.Link>
+                    <LinkContainer to="/tabela-e-partida">
+                        <Nav.Link><FaTable style={styles.icon} /> Gerenciar Jogos</Nav.Link>
                     </LinkContainer>
 
-                    <LinkContainer to="/torneios">
-                        <Nav.Link><FaList style={styles.icon} /> Torneios</Nav.Link>
+                    <LinkContainer to="/cadastrar-time">
+                        <Nav.Link><FaPlus style={styles.icon} /> Cadastrar Time</Nav.Link>
                     </LinkContainer>
 
-                    <LinkContainer to="/resultados">
-                        <Nav.Link><FaList style={styles.icon} /> Atualizar Resultados</Nav.Link>
+                    <LinkContainer to="/gerar-jogos">
+                        <Nav.Link><FaGamepad style={styles.icon} /> Gerar Jogos</Nav.Link>
                     </LinkContainer>
 
-                    <LinkContainer to="/adcionarEquipeGrupo">
-                        <Nav.Link><FaList style={styles.icon} /> Preencher Grupos</Nav.Link>
-                    </LinkContainer>
-
-                    <LinkContainer to="/grupos">
-                        <Nav.Link><FaList style={styles.icon} /> Detalhes Grupos</Nav.Link>
+                    <LinkContainer to="/jogos">
+                        <Nav.Link><FaGamepad style={styles.icon} /> Ver Jogos</Nav.Link>
                     </LinkContainer>
                 </Nav>
             </Navbar.Collapse>
