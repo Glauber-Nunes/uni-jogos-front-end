@@ -7,7 +7,6 @@ const Tabela = () => {
     const [groupName, setGroupName] = useState('');
     const [teams, setTeams] = useState([]);
     const [matches, setMatches] = useState([]);
-    const [updatedMatches, setUpdatedMatches] = useState(new Set());
 
     useEffect(() => {
         if (groupName) {
@@ -39,7 +38,6 @@ const Tabela = () => {
         axios.put(`http://localhost:8080/api/matches/${match.id}`, match)
             .then(response => {
                 alert('Resultado atualizado com sucesso');
-                setUpdatedMatches(new Set(updatedMatches).add(match.id));
                 fetchTeamsAndMatches(groupName); // Atualiza a tabela após a atualização do resultado
             })
             .catch(error => {
@@ -47,9 +45,13 @@ const Tabela = () => {
             });
     };
 
+    const formatScore = (score) => {
+        return score === -1 ? '' : score;
+    };
+
     return (
         <Container className="tabela-container mt-5">
-            <Form>
+            <Form className="search-form">
                 <Form.Group controlId="formGroupName">
                     <Form.Label>Pesquisar Grupo</Form.Label>
                     <Form.Control type="text" value={groupName} onChange={handleGroupChange} placeholder="Digite o nome do grupo" />
@@ -58,20 +60,21 @@ const Tabela = () => {
 
             <Card className="tabela-card mb-4">
                 <Card.Header className="tabela-header">
-                    <h2>Tabela de Classificação</h2>
+                    <h5>Classificação</h5>
                 </Card.Header>
                 <Card.Body>
                     <Table striped bordered hover responsive="sm" className="tabela-classificacao">
                         <thead>
                             <tr>
-                                <th>Posição</th>
-                                <th>Nome</th>
-                                <th>P</th>
-                                <th>V</th>
+                                <th></th>
+                                <th></th>
+                                <th>Pts</th>
+                                <th>VIT</th>
                                 <th>E</th>
-                                <th>D</th>
+                                <th>DER</th>
                                 <th>GP</th>
                                 <th>GC</th>
+                                <th>PJ</th> {/* Nova coluna */}
                             </tr>
                         </thead>
                         <tbody>
@@ -85,6 +88,7 @@ const Tabela = () => {
                                     <td>{team.losses}</td>
                                     <td>{team.goalsFor}</td>
                                     <td>{team.goalsAgainst}</td>
+                                    <td>{team.gamesPlayed}</td> 
                                 </tr>
                             ))}
                         </tbody>
@@ -93,15 +97,12 @@ const Tabela = () => {
             </Card>
 
             <Card className="tabela-card mb-4">
-                <Card.Header className="tabela-header">
-                    <h2>Jogos do Grupo {groupName}</h2>
-                </Card.Header>
                 <Card.Body>
                     {matches.length > 0 && (
                         <>
                             {matches.map((match, index) => (
                                 <div key={match.id} className="match-row mb-3">
-                                    <h5>Partida {index + 1}</h5>
+                                    <h5 className="match-title">Partida {index + 1}</h5>
                                     <Row className="align-items-center">
                                         <Col xs={4} className="team-name">
                                             {match.homeTeam.name}
@@ -109,18 +110,18 @@ const Tabela = () => {
                                         <Col xs={1} className="score-input">
                                             <Form.Control
                                                 type="number"
-                                                value={match.homeGoals}
+                                                value={formatScore(match.homeGoals)}
                                                 onChange={(e) => handleScoreChange(match.id, 'homeGoals', e.target.value)}
-                                                disabled={updatedMatches.has(match.id)}
+                                                disabled={match.status !== "A Realizar"}
                                             />
                                         </Col>
                                         <Col xs={1} className="vs">X</Col>
                                         <Col xs={1} className="score-input">
                                             <Form.Control
                                                 type="number"
-                                                value={match.awayGoals}
+                                                value={formatScore(match.awayGoals)}
                                                 onChange={(e) => handleScoreChange(match.id, 'awayGoals', e.target.value)}
-                                                disabled={updatedMatches.has(match.id)}
+                                                disabled={match.status !== "A Realizar"}
                                             />
                                         </Col>
                                         <Col xs={4} className="team-name">
@@ -129,17 +130,19 @@ const Tabela = () => {
                                     </Row>
                                     <Row className="match-details">
                                         <Col>
-                                            {new Date(match.date).toLocaleString('pt-BR')} | Local do Jogo
+                                            {new Date(match.dateTime).toLocaleString('pt-BR')} | Local do Jogo
                                         </Col>
                                     </Row>
                                     <Row className="justify-content-center mt-2">
-                                        <Button
-                                            variant="primary"
-                                            onClick={() => handleUpdateMatch(match)}
-                                            disabled={updatedMatches.has(match.id)}
-                                        >
-                                            Atualizar
-                                        </Button>
+                                        {match.status === "A Realizar" && (
+                                            <Button
+                                                variant="primary"
+                                                size="sm" // Define o tamanho pequeno
+                                                onClick={() => handleUpdateMatch(match)}
+                                            >
+                                                Atualizar
+                                            </Button>
+                                        )}
                                     </Row>
                                 </div>
                             ))}

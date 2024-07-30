@@ -27,6 +27,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        
     },
     logo: {
         height: '30px', // Adjust the height as needed
@@ -38,6 +39,7 @@ const styles = {
         textAlign: 'center',
         marginLeft: 'auto',
         marginRight: 'auto',
+        
     },
 };
 

@@ -1,45 +1,99 @@
-.matches-container {
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f0f2f5;
+}
+
+.mt-5 {
+    margin-top: 3rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.card-header {
+    background: linear-gradient(90deg, #4e4e4e, #636363);
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 12px 12px 0 0;
+}
+
+.card-header h2 {
+    margin: 0;
+}
+
+.table {
     margin-top: 20px;
 }
 
-.matches-card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.table thead th {
+    background-color: #f7f7f7;
+    color: #333;
 }
 
-.matches-header {
-    background-color: #007bff;
-    color: white;
-    text-align: center;
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-primary {
+    background-color: #ff6600;
+    border-color: #ff6600;
+}
+
+.btn-primary:hover {
+    background-color: #e65c00;
+    border-color: #e65c00;
+}
+
+.matches-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.matches-card:hover {
+    transform: translateY(-5px);
 }
 
 .match-row {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
-.team-logo img {
-    width: 50px;
-    height: 50px;
+.match-row:hover {
+    transform: translateY(-5px);
+}
+
+.match-title {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #4e4e4e;
+    text-align: center;
 }
 
 .team-name {
-    font-size: 1.2em;
     font-weight: bold;
-    text-align: center;
+    font-size: 1.1rem;
 }
 
-.score-input input {
+.score {
     text-align: center;
-    width: 50px;
+    font-size: 1.1rem;
 }
 
 .vs {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .match-details {
+    font-size: 0.9rem;
+    color: #6c757d;
     text-align: center;
-    color: #555;
-    font-size: 0.9em;
 }

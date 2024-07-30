@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Table, Card, Form, Button } from 'react-bootstrap';
+import { Container, Card, Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import './MatchesList.css';
 
 const MatchesList = () => {
     const [groupName, setGroupName] = useState('');
     const [matches, setMatches] = useState([]);
+
+    useEffect(() => {
+        handleAll();
+    }, []);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -13,6 +18,16 @@ const MatchesList = () => {
                 .then(response => setMatches(response.data))
                 .catch(error => console.error('Erro ao carregar os jogos:', error));
         }
+    };
+
+    const handleAll = () => {
+        axios.get(`http://localhost:8080/api/matches/find-all`)
+            .then(response => setMatches(response.data))
+            .catch(error => console.error('Erro ao carregar os jogos:', error));
+    };
+
+    const formatScore = (score) => {
+        return score === -1 ? '--' : score;
     };
 
     return (
@@ -41,33 +56,42 @@ const MatchesList = () => {
             </Card>
 
             {matches.length > 0 && (
-                <Card>
+                <Card className="matches-card">
                     <Card.Header>
-                        <h2>Jogos do {groupName}</h2>
+                        <h2>Jogos Fase De Grupos</h2>
                     </Card.Header>
                     <Card.Body>
-                        <Table striped bordered hover responsive="sm">
-                            <thead>
-                                <tr>
-                                    <th>Time da Casa</th>
-                                    <th>Gols da Casa</th>
-                                    <th>Gols Visitante</th>
-                                    <th>Time Visitante</th>
-                                    <th>Data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {matches.map((match) => (
-                                    <tr key={match.id}>
-                                        <td>{match.homeTeam.name}</td>
-                                        <td>{match.homeGoals}</td>
-                                        <td>{match.awayGoals}</td>
-                                        <td>{match.awayTeam.name}</td>
-                                        <td>{new Date(match.date).toLocaleDateString('pt-BR')}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
+                        {matches.map((match, index) => (
+                            <div key={match.id} className="match-row mb-3">
+                                <Row className="align-items-center">
+                                    <Col xs={4} className="team-name">
+                                        {match.homeTeam.name}
+                                    </Col>
+                                    <Col xs={1} className="score">
+                                        {formatScore(match.homeGoals)}
+                                    </Col>
+                                    <Col xs={1} className="vs">X</Col>
+                                    <Col xs={1} className="score">
+                                        {formatScore(match.awayGoals)}
+                                    </Col>
+                                    <Col xs={4} className="team-name">
+                                        {match.awayTeam.name}
+                                    </Col>
+                                </Row>
+                                <Row className="match-details">
+                                    <Col>
+                                        {new Date(match.dateTime).toLocaleString('pt-BR')} | SESC
+                                    </Col>
+                                </Row>
+
+                                <Row className="match-details">
+                                    <Col >
+                                    <strong>{match.status}</strong>
+                                       
+                                    </Col>
+                                </Row>
+                            </div>
+                        ))}
                     </Card.Body>
                 </Card>
             )}

@@ -1,0 +1,42 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f0f2f5;
+}
+
+.mt-5 {
+    margin-top: 3rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+h2 {
+    color: #4e4e4e;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 0.25rem;
+}
+
+button.btn-primary {
+    background-color: #ff6600;
+    border-color: #ff6600;
+}
+
+button.btn-primary:hover {
+    background-color: #e65c00;
+    border-color: #e65c00;
+}
+
+.Toastify__toast--success {
+    background-color: #4caf50 !important;
+}
+
+.Toastify__toast--error {
+    background-color: #f44336 !important;
+}
