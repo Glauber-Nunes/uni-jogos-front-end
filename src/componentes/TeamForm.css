@@ -1,42 +1,46 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background: #f0f2f5;
+.team-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.mt-5 {
-    margin-top: 3rem !important;
+.form-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
-.mb-4 {
-    margin-bottom: 1.5rem !important;
-}
-
-h2 {
-    color: #4e4e4e;
-}
-
-.form-label {
+.form-card h2 {
+    color: #28a745;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .form-control {
-    border-radius: 0.25rem;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    transition: border-color 0.3s ease;
 }
 
-button.btn-primary {
-    background-color: #ff6600;
-    border-color: #ff6600;
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: none;
 }
 
-button.btn-primary:hover {
-    background-color: #e65c00;
-    border-color: #e65c00;
+button[type="submit"] {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px;
+    transition: background-color 0.3s ease;
 }
 
-.Toastify__toast--success {
-    background-color: #4caf50 !important;
+button[type="submit"]:hover {
+    background-color: #218838;
 }
 
-.Toastify__toast--error {
-    background-color: #f44336 !important;
+button svg {
+    margin-right: 8px;
 }

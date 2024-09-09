@@ -6,11 +6,7 @@ const TopBar = () => {
     return (
         <Navbar bg="dark" variant="dark" style={styles.navbar}>
             <Container style={styles.container}>
-                <img
-                    src={logo}
-                    alt="UniJogos 2025 Gestão"
-                    style={styles.logo}
-                />
+                
                 <Navbar.Brand href="/" style={styles.brand}>
                     UniJogos 2025 Gestão
                 </Navbar.Brand>

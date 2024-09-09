@@ -18,6 +18,7 @@ import TeamForm from './componentes/TeamForm.js';
 import GerarJogos from './componentes/GerarJogos.js';
 import TabelaEPartida from './componentes/TabelaEPartida.js';
 import MatchesList from './componentes/MatchesList.js';
+import CadastroNoticia from './componentes/CadastroNoticia.js';
 
 const App = () => {
     return (
@@ -33,6 +34,7 @@ const App = () => {
                         <Route path="/tabela" element={<Tabela />} />
                         <Route path="/gerar-jogos" element={<GerarJogos />} />
                         <Route path="/jogos" element={<MatchesList />} />
+                        <Route path="/noticia" element={<CadastroNoticia />} />
                     </Routes>
                 </div>
             </div>
